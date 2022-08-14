@@ -65,11 +65,27 @@ Widget::Widget(QWidget *parent)
 
 Widget::~Widget()
 {
+    if(serialPort->isOpen())
+    {
+        serialPort->clear();
+        serialPort->close();
+    }
     delete ui;
 }
 
 void Widget::on_SwitchOnSerialPortPushButton_clicked()
 {
+    //如果串口已经打开了，就先关闭
+    if(serialPort->isOpen())
+    {
+        serialPort->clear();
+        serialPort->close();
+        ui->serialNumberComboBox->setEnabled(true);
+        ui->SwitchOnSerialPortPushButton->setText("打开串口");
+        return;
+    }
+
+
     serialPort->setPortName(ui->serialNumberComboBox->currentText());
     serialPort->setBaudRate(ui->BaudRateComboBox->currentText().toInt());
     serialPort->setDataBits(QSerialPort::Data8);
@@ -79,6 +95,11 @@ void Widget::on_SwitchOnSerialPortPushButton_clicked()
     if(serialPort->isOpen() == false && serialPort->open(QIODevice::ReadWrite) == false)
     {
         QMessageBox::critical(this, "提示", "串口打开失败");
+    }
+    else
+    {
+        ui->serialNumberComboBox->setEnabled(false);
+        ui->SwitchOnSerialPortPushButton->setText("关闭串口");
     }
 }
 
@@ -256,7 +277,7 @@ void Widget::on_lockerPushButton_toggled(bool checked)
         ui->sendMessagePushButton->setEnabled(false);
         ui->sendTextLineEdit->setEnabled(false);
         ui->scanSerialPortPushButton->setEnabled(false);
-        ui->serialNumberComboBox->setEnabled(false);
+        //ui->serialNumberComboBox->setEnabled(false);
         ui->BaudRateComboBox->setEnabled(false);
         ui->addEnterComboBox->setEnabled(false);
         ui->saveConfigPushButton->setEnabled(false);
@@ -277,7 +298,7 @@ void Widget::on_lockerPushButton_toggled(bool checked)
         ui->sendMessagePushButton->setEnabled(true);
         ui->sendTextLineEdit->setEnabled(true);
         ui->scanSerialPortPushButton->setEnabled(true);
-        ui->serialNumberComboBox->setEnabled(true);
+        //ui->serialNumberComboBox->setEnabled(true);
         ui->BaudRateComboBox->setEnabled(true);
         ui->saveConfigPushButton->setEnabled(true);
         ui->addEnterComboBox->setEnabled(true);
