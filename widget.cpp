@@ -123,6 +123,8 @@ void Widget::serialPortReadyRead()
     QString receiveText = QString::fromStdString(receiveData.toStdString());
 
     ui->receiveTextEdit->insertPlainText(receiveText);
+
+    ui->receiveTextEdit->moveCursor(QTextCursor::End);
 }
 
 void Widget::on_sendMessagePushButton_clicked()
