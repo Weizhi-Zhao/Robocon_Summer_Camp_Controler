@@ -50,15 +50,34 @@ private slots:
 
     void on_saveConfigPushButton_clicked();
 
+    void on_ZCommandPushButton_clicked();
+
+    void on_XCommandPushButton_clicked();
+
+    void on_CCommandPushButton_clicked();
+
+    void on_UPCommandPushButton_clicked();
+
+    void on_DOWNCommandPushButton_clicked();
+
+    void on_LEFTCommandPushButton_clicked();
+
+    void on_RIGHTCommandPushButton_clicked();
+
 private:
     Ui::Widget *ui;
 
     QSerialPort *serialPort;
 
-    QString WCommand, ACommand, SCommand, DCommand, QCommand, ECommand, emergencyStopCommand;
+    //0 1 2 3 4 5 6 7 8 9  10   11   12
+    //q w e a s d z x c up down left right
+    //0:press, 1:release
+    QString command[13][2];
+    QString emergencyStopCommand;
 
     QFile file;
 
     void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
 };
 #endif // WIDGET_H
