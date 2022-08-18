@@ -137,6 +137,7 @@ void Widget::on_clearReceiveTextPushButton_clicked()
 
 void Widget::keyPressEvent(QKeyEvent *event)
 {
+    if(event->isAutoRepeat() == true) return;
     switch(event->key())
     {
     case Qt::Key_Q:
@@ -190,6 +191,7 @@ void Widget::keyPressEvent(QKeyEvent *event)
 
 void Widget::keyReleaseEvent(QKeyEvent *event)
 {
+    if(event->isAutoRepeat() == true) return;
     switch(event->key())
     {
     case Qt::Key_Q:
