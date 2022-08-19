@@ -141,42 +141,56 @@ void Widget::keyPressEvent(QKeyEvent *event)
     switch(event->key())
     {
     case Qt::Key_Q:
+        if(command[0][0].isEmpty()) return;
         serialPort->write(command[0][0].toLatin1());
         break;
     case Qt::Key_W:
+        if(command[1][0].isEmpty()) return;
         serialPort->write(command[1][0].toLatin1());
         break;
     case Qt::Key_E:
+        if(command[2][0].isEmpty()) return;
         serialPort->write(command[2][0].toLatin1());
         break;
     case Qt::Key_A:
+        if(command[3][0].isEmpty()) return;
         serialPort->write(command[3][0].toLatin1());
         break;
     case Qt::Key_S:
+        if(command[4][0].isEmpty()) return;
         serialPort->write(command[4][0].toLatin1());
         break;
     case Qt::Key_D:
+        if(command[5][0].isEmpty()) return;
         serialPort->write(command[5][0].toLatin1());
         break;
     case Qt::Key_Z:
+        if(command[6][0].isEmpty()) return;
         serialPort->write(command[6][0].toLatin1());
         break;
     case Qt::Key_X:
+        if(command[7][0].isEmpty()) return;
         serialPort->write(command[7][0].toLatin1());
         break;
     case Qt::Key_C:
+        if(command[8][0].isEmpty()) return;
         serialPort->write(command[8][0].toLatin1());
         break;
     case Qt::Key_Up:
+        if(command[9][0].isEmpty()) return;
         serialPort->write(command[9][0].toLatin1());
         break;
     case Qt::Key_Down:
+        qDebug() << "laq";
+        if(command[10][0].isEmpty()) return;
         serialPort->write(command[10][0].toLatin1());
         break;
     case Qt::Key_Left:
+        if(command[11][0].isEmpty()) return;
         serialPort->write(command[11][0].toLatin1());
         break;
     case Qt::Key_Right:
+        if(command[12][0].isEmpty()) return;
         serialPort->write(command[12][0].toLatin1());
         break;
     default:
@@ -195,42 +209,56 @@ void Widget::keyReleaseEvent(QKeyEvent *event)
     switch(event->key())
     {
     case Qt::Key_Q:
+        if(command[0][1].isEmpty()) return;
         serialPort->write(command[0][1].toLatin1());
         break;
     case Qt::Key_W:
+        if(command[1][1].isEmpty()) return;
         serialPort->write(command[1][1].toLatin1());
         break;
     case Qt::Key_E:
+        if(command[2][1].isEmpty()) return;
         serialPort->write(command[2][1].toLatin1());
         break;
     case Qt::Key_A:
+        if(command[3][1].isEmpty()) return;
         serialPort->write(command[3][1].toLatin1());
         break;
     case Qt::Key_S:
+        if(command[4][1].isEmpty()) return;
         serialPort->write(command[4][1].toLatin1());
         break;
     case Qt::Key_D:
+        if(command[5][1].isEmpty()) return;
         serialPort->write(command[5][1].toLatin1());
         break;
     case Qt::Key_Z:
+        if(command[6][1].isEmpty()) return;
         serialPort->write(command[6][1].toLatin1());
         break;
     case Qt::Key_X:
+        if(command[7][1].isEmpty()) return;
         serialPort->write(command[7][1].toLatin1());
         break;
     case Qt::Key_C:
+        if(command[8][1].isEmpty()) return;
         serialPort->write(command[8][1].toLatin1());
         break;
     case Qt::Key_Up:
+        if(command[9][1].isEmpty()) return;
         serialPort->write(command[9][1].toLatin1());
         break;
     case Qt::Key_Down:
+        if(command[10][1].isEmpty()) return;
+        qDebug() << "faq";
         serialPort->write(command[10][1].toLatin1());
         break;
     case Qt::Key_Left:
+        if(command[11][1].isEmpty()) return;
         serialPort->write(command[11][1].toLatin1());
         break;
     case Qt::Key_Right:
+        if(command[12][1].isEmpty()) return;
         serialPort->write(command[12][1].toLatin1());
         break;
     default:
@@ -248,13 +276,13 @@ void Widget::on_QCommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[0][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[0][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[0][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[0][1] = input;
     }
@@ -265,13 +293,13 @@ void Widget::on_WCommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[1][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[1][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[1][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[1][1] = input;
     }
@@ -282,13 +310,13 @@ void Widget::on_ECommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[2][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[2][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[2][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[2][1] = input;
     }
@@ -299,13 +327,13 @@ void Widget::on_ACommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[3][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[3][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[3][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[3][1] = input;
     }
@@ -316,13 +344,13 @@ void Widget::on_SCommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[4][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[4][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[4][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[4][1] = input;
     }
@@ -333,13 +361,13 @@ void Widget::on_DCommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[5][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[5][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[5][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[5][1] = input;
     }
@@ -350,13 +378,13 @@ void Widget::on_ZCommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[6][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[6][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[6][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[6][1] = input;
     }
@@ -367,13 +395,13 @@ void Widget::on_XCommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[7][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[7][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[7][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[7][1] = input;
     }
@@ -384,13 +412,13 @@ void Widget::on_CCommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[8][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[8][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[8][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[8][1] = input;
     }
@@ -401,13 +429,13 @@ void Widget::on_UPCommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[9][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[9][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[9][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[9][1] = input;
     }
@@ -418,13 +446,13 @@ void Widget::on_DOWNCommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[10][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[10][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[10][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[10][1] = input;
     }
@@ -435,13 +463,13 @@ void Widget::on_LEFTCommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[11][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[11][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[11][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[11][1] = input;
     }
@@ -452,13 +480,13 @@ void Widget::on_RIGHTCommandPushButton_clicked()
     bool ok;
 
     QString input = QInputDialog::getText(this, "按键命令", "按下", QLineEdit::Normal, command[12][0], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[12][0] = input;
     }
 
     input = QInputDialog::getText(this, "按键命令", "松开", QLineEdit::Normal, command[12][1], &ok);
-    if(ok && input.isEmpty() == false)
+    if(ok)
     {
         command[12][1] = input;
     }
@@ -469,7 +497,7 @@ void Widget::on_emergencyStopCommandPushButton_clicked()
     bool ok;
     QString command = QInputDialog::getText(this, "按键命令", "输入按键控制发送的命令", QLineEdit::Normal,
                                             emergencyStopCommand, &ok);
-    if(ok && command.isEmpty() == false)
+    if(ok)
     {
         emergencyStopCommand = command;
     }
